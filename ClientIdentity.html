@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Shim for node.js chaincode Class: CommonIterator</title>
+	<title>Hyperledger Fabric Shim for node.js chaincode Class: ClientIdentity</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -79,17 +79,17 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: CommonIterator</h1>
+	<h1 class="page-title">Class: ClientIdentity</h1>
 <section>
 
 <header>
     
         <h2>
-        CommonIterator
+        ClientIdentity
         </h2>
         
-            <div class="class-description">CommonIterator allows a chaincode to check whether any more result(s)
-need to be fetched from an iterator and close it when done.</div>
+            <div class="class-description">ClientIdentity represents information about the identity that submitted the
+transaction</div>
         
     
 </header>
@@ -101,7 +101,7 @@ need to be fetched from an iterator and close it when done.</div>
         
 <hr>
 <dt>
-    <h4 class="name" id="CommonIterator"><span class="type-signature"></span>new CommonIterator(handler, channel_id, txID, response)</h4>
+    <h4 class="name" id="ClientIdentity"><span class="type-signature"></span>new ClientIdentity(stub)</h4>
     
     
 </dt>
@@ -109,7 +109,7 @@ need to be fetched from an iterator and close it when done.</div>
 
     
     <div class="description">
-        constructor
+        Returns a new instance of ClientIdentity
     </div>
     
 
@@ -144,13 +144,13 @@ need to be fetched from an iterator and close it when done.</div>
 
         <tr>
             
-                <td class="name"><code>handler</code></td>
+                <td class="name"><code>stub</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ChaincodeSupportClient</span>
+<span class="param-type"><a href="ChaincodeStub.html">ChaincodeStub</a></span>
 
 
 
@@ -161,79 +161,7 @@ need to be fetched from an iterator and close it when done.</div>
 
             
 
-            <td class="description last">client handler</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>channel_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">channel id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>txID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">transaction id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>response</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">decoded payload</td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -319,7 +247,7 @@ need to be fetched from an iterator and close it when done.</div>
             
 <hr>
 <dt>
-    <h4 class="name" id="close"><span class="type-signature">&lt;async> </span>close()</h4>
+    <h4 class="name" id="assertAttributeValue"><span class="type-signature"></span>assertAttributeValue(attrName, attrValue)</h4>
     
     
 </dt>
@@ -327,7 +255,8 @@ need to be fetched from an iterator and close it when done.</div>
 
     
     <div class="description">
-        close the iterator.
+        assertAttributeValue verifies that the client has the attribute named `attrName`
+with a value of `attrValue`; otherwise, returns false.
     </div>
     
 
@@ -336,6 +265,80 @@ need to be fetched from an iterator and close it when done.</div>
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -392,11 +395,6 @@ need to be fetched from an iterator and close it when done.</div>
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    A promise that is resolved with the close payload or rejected
-if there is a problem
-</div>
-
 
 
 <dl>
@@ -405,7 +403,7 @@ if there is a problem
     </dt>
     <dd>
         
-<span class="param-type">promise</span>
+<span class="param-type">boolean</span>
 
 
 
@@ -422,7 +420,7 @@ if there is a problem
             
 <hr>
 <dt>
-    <h4 class="name" id="next"><span class="type-signature">&lt;async> </span>next()</h4>
+    <h4 class="name" id="getAttributeValue"><span class="type-signature"></span>getAttributeValue(attrName)</h4>
     
     
 </dt>
@@ -430,8 +428,158 @@ if there is a problem
 
     
     <div class="description">
-        Get the next value and return it through a promise and also emit
-it if event listeners have been registered.
+        getAttributeValue returns the value of the client's attribute named `attrName`.
+If the client possesses the attribute, returns the value of the attribute.
+If the client does not possess the attribute, returns null.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getID"><span class="type-signature"></span>getID()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getID returns the ID associated with the invoking identity.  This ID
+is guaranteed to be unique within the MSP.
     </div>
     
 
@@ -497,8 +645,7 @@ it if event listeners have been registered.
     
             
 <div class="param-desc">
-    a promise that is fulfilled with the next value or
-is rejected otherwise
+    A string in the format: "x509::<subject DN>::<issuer DN>"
 </div>
 
 
@@ -509,7 +656,204 @@ is rejected otherwise
     </dt>
     <dd>
         
-<span class="param-type">promise</span>
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getMSPID"><span class="type-signature"></span>getMSPID()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns the MSP ID of the client
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getX509Certificate"><span class="type-signature"></span>getX509Certificate()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getX509Certificate returns the X509 certificate associated with the client,
+or null if it was not identified by an X509 certificate.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
 
 
 
