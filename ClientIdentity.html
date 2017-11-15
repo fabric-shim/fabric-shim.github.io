@@ -89,7 +89,9 @@
         </h2>
         
             <div class="class-description">ClientIdentity represents information about the identity that submitted the
-transaction</div>
+transaction. Chaincodes can use this class to obtain information about the submitting
+identity including a unique ID, the MSP (Membership Service Provider) ID, and attributes.
+Such information is useful in enforcing access control by the chaincode.</div>
         
     
 </header>
@@ -101,7 +103,7 @@ transaction</div>
         
 <hr>
 <dt>
-    <h4 class="name" id="ClientIdentity"><span class="type-signature"></span>new ClientIdentity(stub)</h4>
+    <h4 class="name" id="ClientIdentity"><span class="type-signature"></span>new ClientIdentity(This)</h4>
     
     
 </dt>
@@ -144,7 +146,7 @@ transaction</div>
 
         <tr>
             
-                <td class="name"><code>stub</code></td>
+                <td class="name"><code>This</code></td>
             
 
             <td class="type">
@@ -161,7 +163,7 @@ transaction</div>
 
             
 
-            <td class="description last"></td>
+            <td class="description last">is the stub object passed to Init() and Invoke() methods</td>
         </tr>
 
     
@@ -221,6 +223,19 @@ transaction</div>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">Check if the submitter is an auditor</p>
+    
+    <pre class="sunlight-highlight-javascript">const ClientIdentity = require(&#x27;fabric-shim&#x27;).ClientIdentity;
+
+let cid = new ClientIdentity(stub); // &quot;stub&quot; is the ChaincodeStub object passed to Init() and Invoke() methods
+if (cid.assertAttributeValue(&#x27;hf.role&#x27;, &#x27;auditor&#x27;)) {
+   // proceed to carry out auditing
+}</pre>
+
 
     
 </dd>
@@ -255,8 +270,8 @@ transaction</div>
 
     
     <div class="description">
-        assertAttributeValue verifies that the client has the attribute named `attrName`
-with a value of `attrValue`; otherwise, returns false.
+        assertAttributeValue verifies that the invoking identity has the attribute named `attrName`
+with a value of `attrValue`.
     </div>
     
 
@@ -308,7 +323,8 @@ with a value of `attrValue`; otherwise, returns false.
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Name of the attribute to retrieve the value from the
+    identity's credentials (such as x.509 certificate for PKI-based MSPs)</td>
         </tr>
 
     
@@ -332,7 +348,7 @@ with a value of `attrValue`; otherwise, returns false.
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Expected value of the attribute</td>
         </tr>
 
     
@@ -395,6 +411,11 @@ with a value of `attrValue`; otherwise, returns false.
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    True if the invoking identity possesses the attribute and the attribute
+    value matches the expected value. Otherwise, returns false.
+</div>
+
 
 
 <dl>
@@ -429,8 +450,8 @@ with a value of `attrValue`; otherwise, returns false.
     
     <div class="description">
         getAttributeValue returns the value of the client's attribute named `attrName`.
-If the client possesses the attribute, returns the value of the attribute.
-If the client does not possess the attribute, returns null.
+If the invoking identity possesses the attribute, returns the value of the attribute.
+If the invoking identity does not possess the attribute, returns null.
     </div>
     
 
@@ -482,7 +503,8 @@ If the client does not possess the attribute, returns null.
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Name of the attribute to retrieve the value from the
+    identity's credentials (such as x.509 certificate for PKI-based MSPs).</td>
         </tr>
 
     
@@ -545,6 +567,11 @@ If the client does not possess the attribute, returns null.
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    Value of the attribute or null if the invoking identity
+    does not possess the attribute.
+</div>
+
 
 
 <dl>
@@ -554,6 +581,9 @@ If the client does not possess the attribute, returns null.
     <dd>
         
 <span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
 
 
 
@@ -645,7 +675,7 @@ is guaranteed to be unique within the MSP.
     
             
 <div class="param-desc">
-    A string in the format: "x509::<subject DN>::<issuer DN>"
+    A string in the format: "x509::{subject DN}::{issuer DN}"
 </div>
 
 
@@ -681,7 +711,7 @@ is guaranteed to be unique within the MSP.
 
     
     <div class="description">
-        Returns the MSP ID of the client
+        Returns the MSP ID of the invoking identity.
     </div>
     
 
@@ -779,8 +809,9 @@ is guaranteed to be unique within the MSP.
 
     
     <div class="description">
-        getX509Certificate returns the X509 certificate associated with the client,
-or null if it was not identified by an X509 certificate.
+        getX509Certificate returns the X509 certificate associated with the invoking identity,
+or null if it was not identified by an X509 certificate, for instance if the MSP is
+implemented with an alternative to PKI such as <a href="https://jira.hyperledger.org/browse/FAB-5673">Identity Mixer</a>.
     </div>
     
 
@@ -853,7 +884,10 @@ or null if it was not identified by an X509 certificate.
     </dt>
     <dd>
         
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#X509Certificate">X509Certificate</a></span>
+|
+
+<span class="param-type">null</span>
 
 
 
@@ -916,7 +950,7 @@ or null if it was not identified by an X509 certificate.
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2017-11-14T16:15:08+00:00
+		on 2017-11-15T15:16:56+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
