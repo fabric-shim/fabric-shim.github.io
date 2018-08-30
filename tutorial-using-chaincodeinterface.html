@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Contract API and Shim for node.js chaincode Index</title>
+	<title>Hyperledger Fabric Contract API and Shim for node.js chaincode Tutorial: Using the Chaincode Interface</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,130 +67,91 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
-			
+			<section class="tutorial-section">
 
-	
-	
+<header>
+    
 
+    <h2>Using the Chaincode Interface</h2>
+</header>
 
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-    <section class="readme-section">
-        <article><p><a href="https://nodei.co/npm/fabric-contract-api/"><img src="https://nodei.co/npm/fabric-contract-api.svg?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM"></a>
-<a href="https://nodei.co/npm/fabric-shim/"><img src="https://nodei.co/npm/fabric-shim.svg?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM"></a></p>
-<p><a href="http://badge.fury.io/js/fabric-shim"><img src="https://badge.fury.io/js/fabric-shim.svg" alt="Version"></a> <a href="https://jenkins.hyperledger.org/view/fabric-chaincode-node/job/fabric-chaincode-node-merge-x86_64"><img src="https://jenkins.hyperledger.org/buildStatus/icon?job=fabric-chaincode-node-merge-x86_64" alt="Build Status"></a></p>
-<p>The <code>fabric-contract-api</code> provides the <em>contract interface</em>. a high level API for application developers to implement <a href="https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html#smart-contract">Smart Contracts</a>. Within Hyperledger Fabric, Smart Contracts are also known as <a href="https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html#chaincode">Chaincode</a>. Working with this API provides a high level entry point to writing business logic.
-(this contract interface is new in version 1.3)</p>
-<p>The <code>fabric-shim</code> provides the <em>chaincode interface</em>, a lower level API for implementing &quot;Smart Contracts&quot;. It also <em>currently</em> provides the implementation to support communication with Hyperledger Fabric peers for Smart Contracts written using the <code>fabric-contract-api</code>.  To confirm that this is the same as the <code>fabric-shim</code> in previous versions of Hyperledger Fabric.</p>
-<p>Detailed explanation on the concept and programming model can be found here: <a href="http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html">http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html</a>.</p>
-<h2>Contract Interface</h2><h3>Installation</h3><pre class="prettyprint source lang-sh"><code>npm install --save fabric-contract-api</code></pre><h3>Usage</h3><p>Implement a class that ends the <code>contract</code> class, a contsturctor is needed. 
-The other functions will be invokable functions of your Smart Contract</p>
-<pre class="prettyprint source lang-javascript"><code>// updatevalues.js
-'use strict';
-
-// SDK Library to asset with writing the logic
-const { Contract } = require('fabric-contract-api');
-
-// Business logic (well just util but still it's general purpose logic)
+<article>
+    <h4>Writing your own chaincode</h4><p>To write your own chaincode is very easy. Create a file named <code>mychaincode.js</code> anywhere in the file system, and put in it the following minimum implementation:</p>
+<pre class="prettyprint source"><code>const shim = require('fabric-shim');
 const util = require('util');
 
-/**
- * Support the Updating of values within the SmartContract
- */
-class UpdateValuesContract extends Contract
+var Chaincode = class {
+        Init(stub) {
+                return stub.putState('dummyKey', Buffer.from('dummyValue'))
+                        .then(() => {
+                                console.info('Chaincode instantiation is successful');
+                                return shim.success();
+                        }, () => {
+                                return shim.error();
+                        });
+        }
 
-    constructor(){
-        super('org.mynamespace.updates');
-    }
+        Invoke(stub) {
+                console.info('Transaction ID: ' + stub.getTxID());
+                console.info(util.format('Args: %j', stub.getArgs()));
 
-    async transactionA(ctx, newValue) {
-        // retrieve existing chaincode states
-        let oldValue = await ctx.stub.getState(key);
+                let ret = stub.getFunctionAndParameters();
+                console.info('Calling function: ' + ret.fcn);
 
-        await ctx.stub.putState(key, Buffer.from(newValue));
-
-        return Buffer.from(newValue.toString());
-    }
-
-    async transactionB(ctx) {
-      //  .....
-    }
-
+                return stub.getState('dummyKey')
+                .then((value) => {
+                        if (value.toString() === 'dummyValue') {
+                                console.info(util.format('successfully retrieved value &quot;%j&quot; for the key &quot;dummyKey&quot;', value ));
+                                return shim.success();
+                        } else {
+                                console.error('Failed to retrieve dummyKey or the retrieved value is not expected: ' + value);
+                                return shim.error();
+                        }
+                });
+        }
 };
 
-module.exports = UpdateValuesContract</code></pre><p>As with standard node modules make sure that this class is exported as follows.</p>
-<pre class="prettyprint source lang-javascript"><code>// index.js
-'use strict';
-
-const UpdateValues = require('./updatevalues')
-module.exports.contracts = ['UpdateValues'];</code></pre><p><strong>Note:</strong> In order to make this contract runnable in version 1.3, also install the <code>fabric-shim</code> module as below, and ensure that the 'start' script in <code>package.json</code> refers to <code>startChaincode</code></p>
-<pre class="prettyprint source lang-json"><code>  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;startChaincode&quot;
-  }</code></pre><h2>Chaincode Interface</h2><h3>Installation</h3><pre class="prettyprint source lang-sh"><code>npm install --save fabric-shim</code></pre><h3>Usage</h3><p>The <a href="https://fabric-shim.github.io/ChaincodeInterface.html">chaincode interface</a> contains two methods to be implemented:</p>
-<pre class="prettyprint source lang-javascript"><code>const shim = require('fabric-shim');
-
-const Chaincode = class {
-    async Init(stub) {
-        // use the instantiate input arguments to decide initial chaincode state values
-
-        // save the initial states
-        await stub.putState(key, Buffer.from(aStringValue));
-
-        return shim.success(Buffer.from('Initialized Successfully!'));
+shim.start(new Chaincode());</code></pre><p>Finally, create a file package.json at the same location, and put in the following content:</p>
+<pre class="prettyprint source"><code>{
+    &quot;name&quot;: &quot;mychaincode&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;description&quot;: &quot;My first exciting chaincode implemented in node.js&quot;,
+    &quot;engines&quot;: {
+        &quot;node&quot;: &quot;>=8.4.0&quot;,
+        &quot;npm&quot;: &quot;>=5.3.0&quot;
+    },
+        &quot;scripts&quot;: { &quot;start&quot; : &quot;node mychaincode.js&quot; },
+    &quot;engine-strict&quot;: true,
+    &quot;engineStrict&quot;: true,
+    &quot;license&quot;: &quot;Apache-2.0&quot;,
+    &quot;dependencies&quot;: {
+        &quot;fabric-shim&quot;: &quot;unastable&quot;
     }
+}</code></pre><p>Now you need to restart the peer in &quot;network&quot; mode instead of &quot;dev&quot; mode:</p>
+<ul>
+<li>If you used binary command <code>peer</code>, restart the peer process in network mode by eliminating the <code>--peer-chaincodev</code> program argument</li>
+<li>If you used 'gulp channel-init', set an environment variable &quot;DEVMODE=false&quot; and run the command again</li>
+</ul>
+<p>Install the chaincode. The peer CLI will package the node.js chaincode source, without the &quot;node_modules&quot; folder, and send to the peer to install. If you have previously installed a chaincode called by the same name and version, you can delete it from the peer by removing the file /var/hyperledger/production/chaincodes/<name>.<version>.</p>
+<pre class="prettyprint source"><code>CORE_LOGGING_PEER=debug ./build/bin/peer chaincode install -l node -n mycc -v v0 -p &lt;path to chaincode folder></code></pre><p>Upon successful response, instantiate the chaincode on the &quot;test&quot; channel created above:</p>
+<pre class="prettyprint source"><code>CORE_LOGGING_PEER=debug ./build/bin/peer chaincode instantiate -o localhost:7050 -C mychannel -l node -n mycc -v v0 -c '{&quot;Args&quot;:[&quot;init&quot;]}' -P 'OR (&quot;Org1MSP.member&quot;)'</code></pre><p>This will take a while to complete as the peer must perform npm install in order to build a custom docker image to launch the chaincode. When successfully completed, you should see in peer's log message confirmation of committing a new block. This new block contains the transaction to instantiate the chaincode &quot;mycc:v0&quot;.</p>
+<p>To further inspect the result of the chaincode instantiate command, run <code>docker images</code> and you will see a new image listed at the top of the list with the name starting with <code>dev-</code>. You can inspect the content of this image by running the following command:</p>
+<pre class="prettyprint source"><code>docker run -it dev-jdoe-mycc-v0 bash
+root@c188ae089ee5:/# ls /usr/local/src
+chaincode.js  fabric-shim  node_modules  package.json
+root@c188ae089ee5:/#</code></pre>
+</article>
 
-    async Invoke(stub) {
-        // use the invoke input arguments to decide intended changes
-
-        // retrieve existing chaincode states
-        let oldValue = await stub.getState(key);
-
-        // calculate new state values and saves them
-        let newValue = oldValue + delta;
-        await stub.putState(key, Buffer.from(newValue));
-
-        return shim.success(Buffer.from(newValue.toString()));
-    }
-};</code></pre><p>Start the chaincode process and listen for incoming endorsement requests:</p>
-<pre class="prettyprint source lang-javascript"><code>shim.start(new Chaincode());</code></pre><h3>API Reference</h3><p>Visit <a href="https://fabric-shim.github.io/">fabric-shim.github.io</a> and click on &quot;Classes&quot; link in the navigation bar on the top to view the list of class APIs.</p>
-<h2>Support</h2><p>Tested with node.js 8.9.0 (LTS).</p>
-<h2>License</h2><p>This package is distributed under the
-<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>,
-see LICENSE.txt for more information.</p></article>
-    </section>
-
-
-
-
-
-
+</section>
 
 		</div>
 	</div>
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
