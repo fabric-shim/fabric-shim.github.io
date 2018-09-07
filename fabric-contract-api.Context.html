@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Contract API and Shim for node.js chaincode Class: ChaincodeProposalPayload</title>
+	<title>Hyperledger Fabric Contract API and Shim for node.js chaincode Class: Context</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,14 +72,24 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: ChaincodeProposalPayload</h1>
+	<h1 class="page-title">Class: Context</h1>
 <section>
 
 <header>
     
         <h2>
-        ChaincodeProposalPayload
+        Context
         </h2>
+        
+            <div class="class-description">The Context class provides the transactional context per a transactional execution.
+
+This can be subclassed to provided additional functional behaviour to support
+smart contract execution.
+
+An example would be to provide additional help to map application object ids to world state
+composite keys.
+
+In the constructor, do not reference the stub or clientidentity functions.</div>
         
     
 </header>
@@ -91,7 +101,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="ChaincodeProposalPayload"><span class="type-signature"></span>new ChaincodeProposalPayload()</h4>
+    <h4 class="name" id="Context"><span class="type-signature"></span>new Context()</h4>
     
     
 </dt>
@@ -110,11 +120,119 @@
 <dl class="details">
     
 
-    <h5 class="subsection-title">Properties:</h5>
+	
 
-    <dl>
+	
 
-<table class="props table table-striped">
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">class ScenarioContext extends Context{
+
+	constructor(){
+		super();
+	}
+
+
+	generateKey(){
+		return this.stub.createCompositeKey(&#x27;type&#x27;,[&#x27;keyvalue&#x27;]);
+	}
+
+  }</pre>
+
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="setChaincodeStub"><span class="type-signature"></span>setChaincodeStub(stub)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This sets the chaincode stub object with api to use for worldstate access.
+MUST NOT BE CALLED FROM SMART CONTRACT CODE
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -136,13 +254,13 @@
 
         <tr>
             
-                <td class="name"><code>input</code></td>
+                <td class="name"><code>stub</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Buffer</span>
+<span class="param-type">ChaincodeStub</span>
 
 
 
@@ -153,41 +271,17 @@
 
             
 
-            <td class="description last">Input contains the arguments for this invocation. If this invocation
-deploys a new chaincode, ESCC/VSCC are part of this field. This is usually a marshaled ChaincodeInvocationSpec</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transientMap</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Map.&lt;string:Buffer></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">TransientMap contains data (e.g. cryptographic material) that might be used
-to implement some form of application-level confidentiality. The contents of this field are supposed to always
-be omitted from the transaction and excluded from the ledger.</td>
+            <td class="description last">chaincode stub instance</td>
         </tr>
 
     
     </tbody>
 </table>
-</dl>
 
+    
+
+    
+<dl class="details">
     
 
 	
@@ -241,8 +335,119 @@ be omitted from the transaction and excluded from the ledger.</td>
     
 </dd>
 
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setClientIdentity"><span class="type-signature"></span>setClientIdentity(clientIdentity)</h4>
     
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This sets the ClientIdentity object to use for information on the transaction invoking identity
+MUST NOT BE CALLED FROM SMART CONTRACT CODE
     </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clientIdentity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ClientIdentity</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">chaincode stub instance</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
 
     
 
@@ -256,6 +461,10 @@ be omitted from the transaction and excluded from the ledger.</td>
 
     
 
+    
+</dd>
+
+        </dl>
     
 
     
