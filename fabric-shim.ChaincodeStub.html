@@ -2243,7 +2243,13 @@ ledger, and should limit use to read-only chaincode operations.
 only supported for state databases that support rich query,
 e.g. CouchDB. The query string is in the native syntax
 of the underlying state database. An StateQueryIterator is returned
-which can be used to iterate (next) over the query result set.<br><br>
+which can be used to iterate over all keys in the query result set.<br><br>
+
+However, if the number of keys in the query result set is greater than the
+totalQueryLimit (defined in core.yaml), this iterator cannot be used
+to fetch all keys in the query result set (results will be limited by
+the totalQueryLimit).
+
 The query is NOT re-executed during validation phase, phantom reads are
 not detected. That is, other committed transactions may have added,
 updated, or removed keys that impact the result set, and this would not
@@ -2385,6 +2391,194 @@ ledger, and should limit use to read-only chaincode operations.
 
 
         
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getQueryResultWithPagination"><span class="type-signature">&lt;async> </span>getQueryResultWithPagination(query, pageSize, bookmark)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getQueryResultWithPagination performs a "rich" query against a state database.
+It is only supported for state databases that support rich query,
+e.g., CouchDB. The query string is in the native syntax
+of the underlying state database. An iterator is returned
+which can be used to iterate over keys in the query result set.
+When an empty string is passed as a value to the bookmark argument, the returned
+iterator can be used to fetch the first `pageSize` of query results.
+When the bookmark is a non-emptry string, the iterator can be used to fetch
+the first `pageSize` keys between the bookmark and the last key in the query result.
+Note that only the bookmark present in a prior page of query results (ResponseMetadata)
+can be used as a value to the bookmark argument. Otherwise, an empty string
+must be passed as bookmark.
+This call is only supported in a read only transaction.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bookmark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 </dd>
@@ -2653,6 +2847,10 @@ ledger, and should limit use to read-only chaincode operations.
     <div class="description">
         Queries the state in the ledger based on a given partial composite key. This function returns an iterator
 which can be used to iterate over all composite keys whose prefix matches the given partial composite key.
+
+However, if the number of matching composite keys is greater than the totalQueryLimit (defined in core.yaml),
+this iterator cannot be used to fetch all matching keys (results will be limited by the totalQueryLimit).
+
 The `objectType` and attributes are expected to have only valid utf8 strings and should not contain
 U+0000 (nil byte) and U+10FFFF (biggest and unallocated code point).<br><br>
 
@@ -2830,6 +3028,223 @@ endorsement (phantom reads detected).
             
 <hr>
 <dt>
+    <h4 class="name" id="getStateByPartialCompositeKeyWithPagination"><span class="type-signature">&lt;async> </span>getStateByPartialCompositeKeyWithPagination(objectType, attributes, pageSize, bookmark)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        GetStateByPartialCompositeKeyWithPagination queries the state in the ledger based on
+a given partial composite key. This function returns an iterator
+which can be used to iterate over the composite keys whose
+prefix matches the given partial composite key.
+When an empty string is passed as a value to the bookmark argument, the returned
+iterator can be used to fetch the first `pageSize` composite keys whose prefix
+matches the given partial composite key.
+When the bookmark is a non-emptry string, the iterator can be used to fetch
+the first `pageSize` keys between the bookmark (inclusive) and the last matching
+composite key.
+Note that only the bookmark present in a prior page of query result (ResponseMetadata)
+can be used as a value to the bookmark argument. Otherwise, an empty string must
+be passed as bookmark.
+The `objectType` and attributes are expected to have only valid utf8 strings
+and should not contain U+0000 (nil byte) and U+10FFFF (biggest and unallocated
+code point). See related functions SplitCompositeKey and CreateCompositeKey.
+Call Close() on the returned StateQueryIteratorInterface object when done.
+This call is only supported in a read only transaction.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objectType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attributes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bookmark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="getStateByRange"><span class="type-signature">&lt;async> </span>getStateByRange(startKey, endKey)</h4>
     
     
@@ -2841,6 +3256,11 @@ endorsement (phantom reads detected).
         Returns a range iterator over a set of keys in the
 ledger. The iterator can be used to iterate over all keys
 between the startKey (inclusive) and endKey (exclusive).
+
+However, if the number of keys between startKey and endKey is greater than the
+totalQueryLimit (defined in core.yaml, which is the peer's configuration file),
+this iterator cannot be used to fetch all keys (results will be limited by the totalQueryLimit).
+
 The keys are returned by the iterator in lexical order. Note
 that startKey and endKey can be empty string, which implies unbounded range
 query on start or end.<br><br>
@@ -3006,6 +3426,221 @@ has not changed since transaction endorsement (phantom reads detected).
 
 
         
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getStateByRangeWithPagination"><span class="type-signature">&lt;async> </span>getStateByRangeWithPagination(startKey, endKey, pageSize, bookmark)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getStateByRangeWithPagination returns a range iterator over a set of keys in the
+ledger. The iterator can be used to fetch keys between the startKey (inclusive)
+and endKey (exclusive).
+When an empty string is passed as a value to the bookmark argument, the returned
+iterator can be used to fetch the first `pageSize` keys between the startKey
+(inclusive) and endKey (exclusive).
+When the bookmark is a non-emptry string, the iterator can be used to fetch
+the first `pageSize` keys between the bookmark (inclusive) and endKey (exclusive).
+Note that only the bookmark present in a prior page of query results (ResponseMetadata)
+can be used as a value to the bookmark argument. Otherwise, an empty string must
+be passed as bookmark.
+The keys are returned by the iterator in lexical order. Note
+that startKey and endKey can be empty string, which implies unbounded range
+query on start or end.
+Call Close() on the returned StateQueryIteratorInterface object when done.
+This call is only supported in a read only transaction.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>startKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bookmark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 </dd>
@@ -4312,7 +4947,7 @@ the values of the attributes.
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-09-07T10:50:19+00:00
+		on 2018-09-17T10:32:53+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
