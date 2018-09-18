@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Contract API and Shim for node.js chaincode Class: Proposal</title>
+	<title>Hyperledger Fabric node.js Shim Class: SignatureHeader</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hyperledger Fabric Contract API and Shim for node.js chaincode</a>
+		<a class="navbar-brand" href="index.html">Hyperledger Fabric node.js Shim</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-contract-api.Context.html">fabric-contract-api.Context</a></li><li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
+					<li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li><li><a href="tutorial-using-contractinterface.html">Using the Contract Interface</a></li>
+					<li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li>
 				</ul>
 			</li>
 			
@@ -72,13 +72,13 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Proposal</h1>
+	<h1 class="page-title">Class: SignatureHeader</h1>
 <section>
 
 <header>
     
         <h2>
-        Proposal
+        SignatureHeader
         </h2>
         
     
@@ -91,16 +91,12 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Proposal"><span class="type-signature"></span>new Proposal()</h4>
+    <h4 class="name" id="SignatureHeader"><span class="type-signature"></span>new SignatureHeader()</h4>
     
     
 </dt>
 <dd>
 
-    
-    <div class="description">
-        The essential content of the chaincode invocation request
-    </div>
     
 
     
@@ -140,13 +136,13 @@
 
         <tr>
             
-                <td class="name"><code>header</code></td>
+                <td class="name"><code>creator</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Header</span>
+<span class="param-type">ProposalCreator</span>
 
 
 
@@ -157,21 +153,20 @@
 
             
 
-            <td class="description last">The header object contains metadata describing key aspects of the invocation
-request such as target channel, transaction ID, and submitter identity etc.</td>
+            <td class="description last">The submitter of the chaincode invocation request</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>payload</code></td>
+                <td class="name"><code>nonce</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ChaincodeProposalPayload</span>
+<span class="param-type">Buffer</span>
 
 
 
@@ -182,7 +177,7 @@ request such as target channel, transaction ID, and submitter identity etc.</td>
 
             
 
-            <td class="description last">The payload object contains actual content of the invocation request</td>
+            <td class="description last">Arbitrary number that may only be used once. Can be used to detect replay attacks.</td>
         </tr>
 
     
@@ -307,7 +302,7 @@ request such as target channel, transaction ID, and submitter identity etc.</td>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-09-17T10:32:54+00:00
+		on 2018-09-18T09:38:59+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
