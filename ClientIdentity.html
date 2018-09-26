@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: CommonIterator</title>
+	<title>Hyperledger Fabric Shim for node.js chaincode Class: ClientIdentity</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hyperledger Fabric node.js Shim</a>
+		<a class="navbar-brand" href="index.html">Hyperledger Fabric Shim for node.js chaincode</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,14 +33,21 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
+					<li><a href="ChaincodeInterface.html">ChaincodeInterface</a></li><li><a href="ChaincodeStub.html">ChaincodeStub</a></li><li><a href="ClientIdentity.html">ClientIdentity</a></li><li><a href="CommonIterator.html">CommonIterator</a></li><li><a href="HistoryQueryIterator.html">HistoryQueryIterator</a></li><li><a href="Shim.html">Shim</a></li><li><a href="StateQueryIterator.html">StateQueryIterator</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li>
+					<li><a href="tutorial-getting-started.html">Getting Started</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -72,17 +79,19 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: CommonIterator</h1>
+	<h1 class="page-title">Class: ClientIdentity</h1>
 <section>
 
 <header>
     
         <h2>
-        CommonIterator
+        ClientIdentity
         </h2>
         
-            <div class="class-description">CommonIterator allows a chaincode to check whether any more result(s)
-need to be fetched from an iterator and close it when done.</div>
+            <div class="class-description">ClientIdentity represents information about the identity that submitted the
+transaction. Chaincodes can use this class to obtain information about the submitting
+identity including a unique ID, the MSP (Membership Service Provider) ID, and attributes.
+Such information is useful in enforcing access control by the chaincode.</div>
         
     
 </header>
@@ -94,7 +103,7 @@ need to be fetched from an iterator and close it when done.</div>
         
 <hr>
 <dt>
-    <h4 class="name" id="CommonIterator"><span class="type-signature"></span>new CommonIterator(handler, channel_id, txID, response)</h4>
+    <h4 class="name" id="ClientIdentity"><span class="type-signature"></span>new ClientIdentity(This)</h4>
     
     
 </dt>
@@ -102,7 +111,7 @@ need to be fetched from an iterator and close it when done.</div>
 
     
     <div class="description">
-        constructor
+        Returns a new instance of ClientIdentity
     </div>
     
 
@@ -137,13 +146,13 @@ need to be fetched from an iterator and close it when done.</div>
 
         <tr>
             
-                <td class="name"><code>handler</code></td>
+                <td class="name"><code>This</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ChaincodeSupportClient</span>
+<span class="param-type"><a href="ChaincodeStub.html">ChaincodeStub</a></span>
 
 
 
@@ -154,79 +163,7 @@ need to be fetched from an iterator and close it when done.</div>
 
             
 
-            <td class="description last">client handler</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>channel_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">channel id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>txID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">transaction id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>response</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">decoded payload</td>
+            <td class="description last">is the stub object passed to Init() and Invoke() methods</td>
         </tr>
 
     
@@ -288,6 +225,19 @@ need to be fetched from an iterator and close it when done.</div>
     
 
     
+        <h5>Example</h5>
+        
+        <p class="code-caption">Check if the submitter is an auditor</p>
+    
+    <pre class="sunlight-highlight-javascript">const ClientIdentity = require(&#x27;fabric-shim&#x27;).ClientIdentity;
+
+let cid = new ClientIdentity(stub); // &quot;stub&quot; is the ChaincodeStub object passed to Init() and Invoke() methods
+if (cid.assertAttributeValue(&#x27;hf.role&#x27;, &#x27;auditor&#x27;)) {
+   // proceed to carry out auditing
+}</pre>
+
+
+    
 </dd>
 
     
@@ -312,7 +262,7 @@ need to be fetched from an iterator and close it when done.</div>
             
 <hr>
 <dt>
-    <h4 class="name" id="close"><span class="type-signature">&lt;async> </span>close()</h4>
+    <h4 class="name" id="assertAttributeValue"><span class="type-signature"></span>assertAttributeValue(attrName, attrValue)</h4>
     
     
 </dt>
@@ -320,7 +270,8 @@ need to be fetched from an iterator and close it when done.</div>
 
     
     <div class="description">
-        close the iterator.
+        assertAttributeValue verifies that the invoking identity has the attribute named `attrName`
+with a value of `attrValue`.
     </div>
     
 
@@ -329,6 +280,81 @@ need to be fetched from an iterator and close it when done.</div>
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Name of the attribute to retrieve the value from the
+    identity's credentials (such as x.509 certificate for PKI-based MSPs)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Expected value of the attribute</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -386,8 +412,8 @@ need to be fetched from an iterator and close it when done.</div>
     
             
 <div class="param-desc">
-    A promise that is resolved with the close payload or rejected
-if there is a problem
+    True if the invoking identity possesses the attribute and the attribute
+    value matches the expected value. Otherwise, returns false.
 </div>
 
 
@@ -398,7 +424,7 @@ if there is a problem
     </dt>
     <dd>
         
-<span class="param-type">promise</span>
+<span class="param-type">boolean</span>
 
 
 
@@ -415,7 +441,7 @@ if there is a problem
             
 <hr>
 <dt>
-    <h4 class="name" id="next"><span class="type-signature">&lt;async> </span>next()</h4>
+    <h4 class="name" id="getAttributeValue"><span class="type-signature"></span>getAttributeValue(attrName)</h4>
     
     
 </dt>
@@ -423,8 +449,167 @@ if there is a problem
 
     
     <div class="description">
-        Get the next value and return it through a promise and also emit
-it if event listeners have been registered.
+        getAttributeValue returns the value of the client's attribute named `attrName`.
+If the invoking identity possesses the attribute, returns the value of the attribute.
+If the invoking identity does not possess the attribute, returns null.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Name of the attribute to retrieve the value from the
+    identity's credentials (such as x.509 certificate for PKI-based MSPs).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Value of the attribute or null if the invoking identity
+    does not possess the attribute.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getID"><span class="type-signature"></span>getID()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getID returns the ID associated with the invoking identity.  This ID
+is guaranteed to be unique within the MSP.
     </div>
     
 
@@ -490,8 +675,7 @@ it if event listeners have been registered.
     
             
 <div class="param-desc">
-    a promise that is fulfilled with the next value or
-is rejected otherwise
+    A string in the format: "x509::{subject DN}::{issuer DN}"
 </div>
 
 
@@ -502,7 +686,208 @@ is rejected otherwise
     </dt>
     <dd>
         
-<span class="param-type">promise</span>
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getMSPID"><span class="type-signature"></span>getMSPID()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns the MSP ID of the invoking identity.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getX509Certificate"><span class="type-signature"></span>getX509Certificate()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getX509Certificate returns the X509 certificate associated with the invoking identity,
+or null if it was not identified by an X509 certificate, for instance if the MSP is
+implemented with an alternative to PKI such as <a href="https://jira.hyperledger.org/browse/FAB-5673">Identity Mixer</a>.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#X509Certificate">X509Certificate</a></span>
+|
+
+<span class="param-type">null</span>
 
 
 
@@ -565,7 +950,7 @@ is rejected otherwise
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-09-19T13:59:53+00:00
+		on 2018-09-26T14:44:00+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

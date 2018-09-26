@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: X509Certificate</title>
+	<title>Hyperledger Fabric Shim for node.js chaincode Class: ChaincodeInterface</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hyperledger Fabric node.js Shim</a>
+		<a class="navbar-brand" href="index.html">Hyperledger Fabric Shim for node.js chaincode</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,14 +33,21 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
+					<li><a href="ChaincodeInterface.html">ChaincodeInterface</a></li><li><a href="ChaincodeStub.html">ChaincodeStub</a></li><li><a href="ClientIdentity.html">ClientIdentity</a></li><li><a href="CommonIterator.html">CommonIterator</a></li><li><a href="HistoryQueryIterator.html">HistoryQueryIterator</a></li><li><a href="Shim.html">Shim</a></li><li><a href="StateQueryIterator.html">StateQueryIterator</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li>
+					<li><a href="tutorial-getting-started.html">Getting Started</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -72,14 +79,21 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: X509Certificate</h1>
+	<h1 class="page-title">Class: ChaincodeInterface</h1>
 <section>
 
 <header>
     
         <h2>
-        X509Certificate
+        ChaincodeInterface
         </h2>
+        
+            <div class="class-description">Chaincodes must implement the methods in this interface. The Init() method is called during
+chaincode <code>instantiation</code> or <code>upgrade</code> to preform any necessary intitialization
+of the application state. Invoke() is called by <code>invoke transaction</code> or <code>query</code>
+requests. Both methods are provided with a <a href="ChaincodeStub.html">stub</a> object that can be used to
+discover information on the request (invoking identity, target channel, arguments, etc.) as well as
+talking with the peer to retrieve or update application state.</div>
         
     
 </header>
@@ -91,45 +105,12 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="X509Certificate"><span class="type-signature"></span>new X509Certificate()</h4>
+    <h4 class="name" id="ChaincodeInterface"><span class="type-signature"></span>new ChaincodeInterface()</h4>
     
     
 </dt>
 <dd>
 
-    
-    <div class="description">
-        An object representing an x.509 certificate with the following structure:
-<br><pre>
-{ subject: {
-    countryName: 'US',
-    postalCode: '10010',
-    stateOrProvinceName: 'NY',
-    localityName: 'New York',
-    streetAddress: '902 Broadway, 4th Floor',
-    organizationName: 'Nodejitsu',
-    organizationalUnitName: 'PremiumSSL Wildcard',
-    commonName: '*.nodejitsu.com'
-  },
-  issuer: {
-    countryName: 'GB',
-    stateOrProvinceName: 'Greater Manchester',
-    localityName: 'Salford',
-    organizationName: 'COMODO CA Limited',
-    commonName: 'COMODO High-Assurance Secure Server CA'
-  },
-  notBefore: Sun Oct 28 2012 20:00:00 GMT-0400 (EDT),
-  notAfter: Wed Nov 26 2014 18:59:59 GMT-0500 (EST),
-  altNames: [ '*.nodejitsu.com', 'nodejitsu.com' ],
-  signatureAlgorithm: 'sha1WithRSAEncryption',
-  fingerPrint: 'E4:7E:24:8E:86:D2:BE:55:C0:4D:41:A1:C2:0E:06:96:56:B9:8E:EC',
-  publicKey: {
-    algorithm: 'rsaEncryption',
-    e: '65537',
-    n: '.......'
-  }
-}
-    </div>
     
 
     
@@ -210,6 +191,272 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="Init"><span class="type-signature">&lt;async> </span>Init(stub)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Called during chaincode instantiate and upgrade. This method can be used
+to initialize asset states
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stub</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ChaincodeStub.html">ChaincodeStub</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The chaincode stub is implemented by the <code>fabric-shim</code>
+library and passed to the ChaincodeInterface calls by the Hyperledger Fabric platform. The stub
+encapsulates the APIs between the chaincode implementation and the Fabric peer</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Invoke"><span class="type-signature">&lt;async> </span>Invoke(stub)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        called throughout the life time of the chaincode to carry out business
+transaction logic and effect the asset states
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stub</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ChaincodeStub.html">ChaincodeStub</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The chaincode stub is implemented by the <code>fabric-shim</code>
+library and passed to the ChaincodeInterface calls by the Hyperledger Fabric platform. The stub
+encapsulates the APIs between the chaincode implementation and the Fabric peer</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
 
     
 
@@ -258,7 +505,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-09-19T13:59:54+00:00
+		on 2018-09-26T14:44:00+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
