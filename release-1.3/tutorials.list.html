@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Shim for node.js chaincode Class: CommonIterator</title>
+	<title>Hyperledger Fabric node.js Shim Tutorials</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hyperledger Fabric Shim for node.js chaincode</a>
+		<a class="navbar-brand" href="index.html">Hyperledger Fabric node.js Shim</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,21 +33,14 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="ChaincodeInterface.html">ChaincodeInterface</a></li><li><a href="ChaincodeStub.html">ChaincodeStub</a></li><li><a href="ClientIdentity.html">ClientIdentity</a></li><li><a href="CommonIterator.html">CommonIterator</a></li><li><a href="HistoryQueryIterator.html">HistoryQueryIterator</a></li><li><a href="Shim.html">Shim</a></li><li><a href="StateQueryIterator.html">StateQueryIterator</a></li>
+					<li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-getting-started.html">Getting Started</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
+					<li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li>
 				</ul>
 			</li>
 			
@@ -79,17 +72,14 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: CommonIterator</h1>
+	<h1 class="page-title">Tutorials</h1>
 <section>
 
 <header>
     
         <h2>
-        CommonIterator
-        </h2>
         
-            <div class="class-description">CommonIterator allows a chaincode to check whether any more result(s)
-need to be fetched from an iterator and close it when done.</div>
+        </h2>
         
     
 </header>
@@ -99,150 +89,8 @@ need to be fetched from an iterator and close it when done.</div>
     <div class="container-overview">
     
         
-<hr>
-<dt>
-    <h4 class="name" id="CommonIterator"><span class="type-signature"></span>new CommonIterator(handler, channel_id, txID, response)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        constructor
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
 
         
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>handler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ChaincodeSupportClient</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">client handler</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>channel_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">channel id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>txID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">transaction id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>response</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">decoded payload</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
 <dl class="details">
     
 
@@ -282,21 +130,7 @@ need to be fetched from an iterator and close it when done.</div>
 </dl>
 
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
+        
     
     </div>
 
@@ -305,224 +139,74 @@ need to be fetched from an iterator and close it when done.</div>
     
 
     
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            
-<hr>
-<dt>
-    <h4 class="name" id="close"><span class="type-signature">&lt;async> </span>close()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        close the iterator.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A promise that is resolved with the close payload or rejected
-if there is a problem
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
+            <dt><a href="fabric-shim.ChaincodeInterface.html">ChaincodeInterface</a></dt>
+            <dd></dd>
         
-<span class="param-type">promise</span>
-
-
-
-    </dd>
-</dl>
-
-
+            <dt><a href="fabric-shim.ChaincodeProposalPayload.html">ChaincodeProposalPayload</a></dt>
+            <dd></dd>
         
-
-    
-</dd>
-
+            <dt><a href="fabric-shim.ChaincodeStub.html">ChaincodeStub</a></dt>
+            <dd></dd>
         
-            
-<hr>
-<dt>
-    <h4 class="name" id="next"><span class="type-signature">&lt;async> </span>next()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Get the next value and return it through a promise and also emit
-it if event listeners have been registered.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    a promise that is fulfilled with the next value or
-is rejected otherwise
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
+            <dt><a href="fabric-shim.ChannelHeader.html">ChannelHeader</a></dt>
+            <dd></dd>
         
-<span class="param-type">promise</span>
-
-
-
-    </dd>
-</dl>
-
-
+            <dt><a href="fabric-shim.ClientIdentity.html">ClientIdentity</a></dt>
+            <dd></dd>
         
-
-    
-</dd>
-
+            <dt><a href="fabric-shim.CommonIterator.html">CommonIterator</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.ErrorResponse.html">ErrorResponse</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.FunctionAndParameters.html">FunctionAndParameters</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.Header.html">Header</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.HistoryQueryIterator.html">HistoryQueryIterator</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.Proposal.html">Proposal</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.ProposalCreator.html">ProposalCreator</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.Response.html">Response</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.Shim.html">Shim</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.SignatureHeader.html">SignatureHeader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.SignedProposal.html">SignedProposal</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.StateQueryIterator.html">StateQueryIterator</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.SuccessResponse.html">SuccessResponse</a></dt>
+            <dd></dd>
+        
+            <dt><a href="fabric-shim.X509Certificate.html">X509Certificate</a></dt>
+            <dd></dd>
         </dl>
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -572,7 +256,7 @@ is rejected otherwise
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-09-26T15:38:10+00:00
+		on 2018-10-01T19:43:32+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
