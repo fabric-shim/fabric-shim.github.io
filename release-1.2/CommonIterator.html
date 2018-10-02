@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: Shim</title>
+	<title>Hyperledger Fabric Shim for node.js chaincode Class: CommonIterator</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Hyperledger Fabric node.js Shim</a>
+		<a class="navbar-brand" href="index.html">Hyperledger Fabric Shim for node.js chaincode</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,14 +33,21 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
+					<li><a href="ChaincodeInterface.html">ChaincodeInterface</a></li><li><a href="ChaincodeStub.html">ChaincodeStub</a></li><li><a href="ClientIdentity.html">ClientIdentity</a></li><li><a href="CommonIterator.html">CommonIterator</a></li><li><a href="HistoryQueryIterator.html">HistoryQueryIterator</a></li><li><a href="Shim.html">Shim</a></li><li><a href="StateQueryIterator.html">StateQueryIterator</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li>
+					<li><a href="tutorial-getting-started.html">Getting Started</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -72,18 +79,17 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Shim</h1>
+	<h1 class="page-title">Class: CommonIterator</h1>
 <section>
 
 <header>
     
         <h2>
-        Shim
+        CommonIterator
         </h2>
         
-            <div class="class-description">The shim class provides the service to register the chaincode with the target peer, and
-listen for incoming requests from the peer to dispatch to the chaincode in order to process
-transaction proposals or execute queries.</div>
+            <div class="class-description">CommonIterator allows a chaincode to check whether any more result(s)
+need to be fetched from an iterator and close it when done.</div>
         
     
 </header>
@@ -95,19 +101,145 @@ transaction proposals or execute queries.</div>
         
 <hr>
 <dt>
-    <h4 class="name" id="Shim"><span class="type-signature"></span>new Shim()</h4>
+    <h4 class="name" id="CommonIterator"><span class="type-signature"></span>new CommonIterator(handler, channel_id, txID, response)</h4>
     
     
 </dt>
 <dd>
 
     
-
+    <div class="description">
+        constructor
+    </div>
     
 
     
 
     
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ChaincodeSupportClient</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">client handler</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>channel_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">channel id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>txID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">transaction id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>response</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">decoded payload</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -187,7 +319,7 @@ transaction proposals or execute queries.</div>
             
 <hr>
 <dt>
-    <h4 class="name" id=".error"><span class="type-signature">&lt;static> </span>error(msg)</h4>
+    <h4 class="name" id="close"><span class="type-signature">&lt;async> </span>close()</h4>
     
     
 </dt>
@@ -195,7 +327,7 @@ transaction proposals or execute queries.</div>
 
     
     <div class="description">
-        Returns a standard response object with status code 200 and an optional payload
+        close the iterator.
     </div>
     
 
@@ -204,204 +336,6 @@ transaction proposals or execute queries.</div>
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>msg</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">A message describing the error</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">ErrorResponse</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".newLogger"><span class="type-signature">&lt;static> </span>newLogger(name)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Returns a log4js logger named after <code>name</code>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Logger name used to label log messages produced by the returned logger</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -459,7 +393,8 @@ transaction proposals or execute queries.</div>
     
             
 <div class="param-desc">
-    log4js based logger. See log4js documentation for usage details
+    A promise that is resolved with the close payload or rejected
+if there is a problem
 </div>
 
 
@@ -470,7 +405,7 @@ transaction proposals or execute queries.</div>
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type">promise</span>
 
 
 
@@ -487,7 +422,7 @@ transaction proposals or execute queries.</div>
             
 <hr>
 <dt>
-    <h4 class="name" id=".start"><span class="type-signature">&lt;static> </span>start(chaincode)</h4>
+    <h4 class="name" id="next"><span class="type-signature">&lt;async> </span>next()</h4>
     
     
 </dt>
@@ -495,10 +430,8 @@ transaction proposals or execute queries.</div>
 
     
     <div class="description">
-        Call this method to start the chaincode process. After constructing a chaincode object,
-pass the object to this function which will initiate a request to register the chaincode
-with the target peer. The address of the target peer must be provided via a program
-argument <code>--peer.address</code>
+        Get the next value and return it through a promise and also emit
+it if event listeners have been registered.
     </div>
     
 
@@ -507,184 +440,6 @@ argument <code>--peer.address</code>
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>chaincode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ChaincodeInterface</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">User-provided object that must implement the <code>ChaincodeInterface</code></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".success"><span class="type-signature">&lt;static> </span>success(payload)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Returns a standard response object with status code 200 and an optional payload
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>payload</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Buffer</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Can be any content the chaincode wish to return to the client</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -741,6 +496,11 @@ argument <code>--peer.address</code>
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    a promise that is fulfilled with the next value or
+is rejected otherwise
+</div>
+
 
 
 <dl>
@@ -749,7 +509,7 @@ argument <code>--peer.address</code>
     </dt>
     <dd>
         
-<span class="param-type">SuccessResponse</span>
+<span class="param-type">promise</span>
 
 
 
@@ -812,7 +572,7 @@ argument <code>--peer.address</code>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-10-02T13:11:36+00:00
+		on 2018-10-02T16:17:46+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
