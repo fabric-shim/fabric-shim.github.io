@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: ProposalCreator</title>
+	<title>Hyperledger Fabric node.js Shim Index</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,177 +72,66 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: ProposalCreator</h1>
-<section>
-
-<header>
-    
-        <h2>
-        ProposalCreator
-        </h2>
-        
-    
-</header>
-
-
-<article>
-    <div class="container-overview">
-    
-        
-<hr>
-<dt>
-    <h4 class="name" id="ProposalCreator"><span class="type-signature"></span>new ProposalCreator()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        This object contains the essential identity information of the chaincode invocation's submitter,
-including its organizational affiliation (mspid) and certificate (id_bytes)
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    <dl>
-
-<table class="props table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>mspid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The unique ID of the Membership Service Provider instance that is associated
-to the identity's organization and is able to perform digital signing and signature verification</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-</dl>
-
-    
-
 	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
 	
 
 
 
+
+
+
+
+
+
+
+
+	
 	
 
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
+    <section class="readme-section">
+        <article><p><a href="https://nodei.co/npm/fabric-contract-api/"><img src="https://nodei.co/npm/fabric-shim.svg?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM"></a></p>
+<p><a href="http://badge.fury.io/js/fabric-shim"><img src="https://badge.fury.io/js/fabric-shim.svg" alt="Version"></a> <a href="https://jenkins.hyperledger.org/view/fabric-chaincode-node/job/fabric-chaincode-node-merge-x86_64"><img src="https://jenkins.hyperledger.org/buildStatus/icon?job=fabric-chaincode-node-merge-x86_64" alt="Build Status"></a></p>
+<p>The <code>fabric-shim</code> provides the <em>chaincode interface</em>, a lower level API for implementing &quot;Smart Contracts&quot;. To confirm that this is the same as the <code>fabric-shim</code> in previous versions of Hyperledger Fabric.</p>
+<p>Detailed explanation on the concept and programming model can be found here: <a href="http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html">http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html</a>.</p>
+<h2>Chaincode Interface</h2><h3>Installation</h3><pre class="prettyprint source lang-sh"><code>npm install --save fabric-shim</code></pre><h3>Usage</h3><p>The <a href="https://fabric-shim.github.io/ChaincodeInterface.html">chaincode interface</a> contains two methods to be implemented:</p>
+<pre class="prettyprint source lang-javascript"><code>const shim = require('fabric-shim');
 
-    
+const Chaincode = class {
+    async Init(stub) {
+        // use the instantiate input arguments to decide initial chaincode state values
 
-    
+        // save the initial states
+        await stub.putState(key, Buffer.from(aStringValue));
 
-    
+        return shim.success(Buffer.from('Initialized Successfully!'));
+    }
 
-    
-</dd>
+    async Invoke(stub) {
+        // use the invoke input arguments to decide intended changes
 
-    
-    </div>
+        // retrieve existing chaincode states
+        let oldValue = await stub.getState(key);
 
-    
+        // calculate new state values and saves them
+        let newValue = oldValue + delta;
+        await stub.putState(key, Buffer.from(newValue));
 
-    
+        return shim.success(Buffer.from(newValue.toString()));
+    }
+};</code></pre><p>Start the chaincode process and listen for incoming endorsement requests:</p>
+<pre class="prettyprint source lang-javascript"><code>shim.start(new Chaincode());</code></pre><h3>API Reference</h3><p>Visit <a href="https://fabric-shim.github.io/">fabric-shim.github.io</a> and click on &quot;Classes&quot; link in the navigation bar on the top to view the list of class APIs.</p>
+<h2>Support</h2><p>Tested with node.js 8.9.0 (LTS).</p>
+<h2>License</h2><p>This package is distributed under the
+<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>,
+see LICENSE.txt for more information.</p></article>
+    </section>
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
@@ -284,7 +173,7 @@ to the identity's organization and is able to perform digital signing and signat
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-10-01T19:43:32+00:00
+		on 2018-10-02T13:11:36+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

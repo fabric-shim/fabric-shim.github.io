@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: HistoryQueryIterator</title>
+	<title>Hyperledger Fabric node.js Shim Class: ChaincodeInterface</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,17 +72,21 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: HistoryQueryIterator</h1>
+	<h1 class="page-title">Class: ChaincodeInterface</h1>
 <section>
 
 <header>
     
         <h2>
-        HistoryQueryIterator
+        ChaincodeInterface
         </h2>
         
-            <div class="class-description">A History Query iterator allows a chaincode to iterate over a
-set of key/value pairs returned by a history query</div>
+            <div class="class-description">Chaincodes must implement the methods in this interface. The Init() method is called during
+chaincode <code>instantiation</code> or <code>upgrade</code> to preform any necessary intitialization
+of the application state. Invoke() is called by <code>invoke transaction</code> or <code>query</code>
+requests. Both methods are provided with a stub object that can be used to
+discover information on the request (invoking identity, target channel, arguments, etc.) as well as
+talking with the peer to retrieve or update application state.</div>
         
     
 </header>
@@ -94,7 +98,7 @@ set of key/value pairs returned by a history query</div>
         
 <hr>
 <dt>
-    <h4 class="name" id="HistoryQueryIterator"><span class="type-signature"></span>new HistoryQueryIterator()</h4>
+    <h4 class="name" id="ChaincodeInterface"><span class="type-signature"></span>new ChaincodeInterface()</h4>
     
     
 </dt>
@@ -168,14 +172,134 @@ set of key/value pairs returned by a history query</div>
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="Init"><span class="type-signature">&lt;async> </span>Init(stub)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Called during chaincode instantiate and upgrade. This method can be used
+to initialize asset states
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
 
         
 
+        
 
-    <ul>
-        <li>CommonIterator</li>
-    </ul>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stub</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ChaincodeStub</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The chaincode stub is implemented by the <code>fabric-shim</code>
+library and passed to the ChaincodeInterface calls by the Hyperledger Fabric platform. The stub
+encapsulates the APIs between the chaincode implementation and the Fabric peer</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
 
 
     
@@ -190,6 +314,141 @@ set of key/value pairs returned by a history query</div>
 
     
 
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Invoke"><span class="type-signature">&lt;async> </span>Invoke(stub)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        called throughout the life time of the chaincode to carry out business
+transaction logic and effect the asset states
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stub</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ChaincodeStub</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The chaincode stub is implemented by the <code>fabric-shim</code>
+library and passed to the ChaincodeInterface calls by the Hyperledger Fabric platform. The stub
+encapsulates the APIs between the chaincode implementation and the Fabric peer</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     
@@ -239,7 +498,7 @@ set of key/value pairs returned by a history query</div>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-10-01T19:43:32+00:00
+		on 2018-10-02T13:11:36+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

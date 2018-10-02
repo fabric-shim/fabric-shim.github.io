@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: ChaincodeInterface</title>
+	<title>Hyperledger Fabric node.js Shim Class: SignedProposal</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,21 +72,14 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: ChaincodeInterface</h1>
+	<h1 class="page-title">Class: SignedProposal</h1>
 <section>
 
 <header>
     
         <h2>
-        ChaincodeInterface
+        SignedProposal
         </h2>
-        
-            <div class="class-description">Chaincodes must implement the methods in this interface. The Init() method is called during
-chaincode <code>instantiation</code> or <code>upgrade</code> to preform any necessary intitialization
-of the application state. Invoke() is called by <code>invoke transaction</code> or <code>query</code>
-requests. Both methods are provided with a stub object that can be used to
-discover information on the request (invoking identity, target channel, arguments, etc.) as well as
-talking with the peer to retrieve or update application state.</div>
         
     
 </header>
@@ -98,12 +91,17 @@ talking with the peer to retrieve or update application state.</div>
         
 <hr>
 <dt>
-    <h4 class="name" id="ChaincodeInterface"><span class="type-signature"></span>new ChaincodeInterface()</h4>
+    <h4 class="name" id="SignedProposal"><span class="type-signature"></span>new SignedProposal()</h4>
     
     
 </dt>
 <dd>
 
+    
+    <div class="description">
+        The SignedProposal object represents the request object sent by the client application
+to the chaincode.
+    </div>
     
 
     
@@ -117,102 +115,11 @@ talking with the peer to retrieve or update application state.</div>
 <dl class="details">
     
 
-	
+    <h5 class="subsection-title">Properties:</h5>
 
-	
+    <dl>
 
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<hr>
-<dt>
-    <h4 class="name" id="Init"><span class="type-signature">&lt;async> </span>Init(stub)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Called during chaincode instantiate and upgrade. This method can be used
-to initialize asset states
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
+<table class="props table table-striped">
     <thead>
     <tr>
         
@@ -234,13 +141,13 @@ to initialize asset states
 
         <tr>
             
-                <td class="name"><code>stub</code></td>
+                <td class="name"><code>signature</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ChaincodeStub</span>
+<span class="param-type">Buffer</span>
 
 
 
@@ -251,127 +158,22 @@ to initialize asset states
 
             
 
-            <td class="description last">The chaincode stub is implemented by the <code>fabric-shim</code>
-library and passed to the ChaincodeInterface calls by the Hyperledger Fabric platform. The stub
-encapsulates the APIs between the chaincode implementation and the Fabric peer</td>
+            <td class="description last">The signature over the proposal. This signature is to be verified against
+the ProposalCreator returned by <code>getCreator()</code>. The signature will have already been
+verified by the peer before the invocation request reaches the chaincode.</td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="Invoke"><span class="type-signature">&lt;async> </span>Invoke(stub)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        called throughout the life time of the chaincode to carry out business
-transaction logic and effect the asset states
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>stub</code></td>
+                <td class="name"><code>proposal</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ChaincodeStub</span>
+<span class="param-type">Proposal</span>
 
 
 
@@ -382,19 +184,14 @@ transaction logic and effect the asset states
 
             
 
-            <td class="description last">The chaincode stub is implemented by the <code>fabric-shim</code>
-library and passed to the ChaincodeInterface calls by the Hyperledger Fabric platform. The stub
-encapsulates the APIs between the chaincode implementation and the Fabric peer</td>
+            <td class="description last">The object containing the chaincode invocation request and metadata about the request</td>
         </tr>
 
     
     </tbody>
 </table>
+</dl>
 
-    
-
-    
-<dl class="details">
     
 
 	
@@ -448,7 +245,21 @@ encapsulates the APIs between the chaincode implementation and the Fabric peer</
     
 </dd>
 
-        </dl>
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -498,7 +309,7 @@ encapsulates the APIs between the chaincode implementation and the Fabric peer</
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-10-01T19:43:32+00:00
+		on 2018-10-02T13:11:36+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

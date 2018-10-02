@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric node.js Shim Class: SignatureHeader</title>
+	<title>Hyperledger Fabric node.js Shim Class: CommonIterator</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,14 +72,17 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: SignatureHeader</h1>
+	<h1 class="page-title">Class: CommonIterator</h1>
 <section>
 
 <header>
     
         <h2>
-        SignatureHeader
+        CommonIterator
         </h2>
+        
+            <div class="class-description">CommonIterator allows a chaincode to check whether any more result(s)
+need to be fetched from an iterator and close it when done.</div>
         
     
 </header>
@@ -91,30 +94,28 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="SignatureHeader"><span class="type-signature"></span>new SignatureHeader()</h4>
+    <h4 class="name" id="CommonIterator"><span class="type-signature"></span>new CommonIterator(handler, channel_id, txID, response)</h4>
     
     
 </dt>
 <dd>
 
     
-
+    <div class="description">
+        constructor
+    </div>
     
 
     
 
     
-    
 
     
-<dl class="details">
     
+        <h5>Parameters:</h5>
+        
 
-    <h5 class="subsection-title">Properties:</h5>
-
-    <dl>
-
-<table class="props table table-striped">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -136,13 +137,13 @@
 
         <tr>
             
-                <td class="name"><code>creator</code></td>
+                <td class="name"><code>handler</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">ProposalCreator</span>
+<span class="param-type">ChaincodeSupportClient</span>
 
 
 
@@ -153,20 +154,20 @@
 
             
 
-            <td class="description last">The submitter of the chaincode invocation request</td>
+            <td class="description last">client handler</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>nonce</code></td>
+                <td class="name"><code>channel_id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Buffer</span>
+<span class="param-type">string</span>
 
 
 
@@ -177,14 +178,65 @@
 
             
 
-            <td class="description last">Arbitrary number that may only be used once. Can be used to detect replay attacks.</td>
+            <td class="description last">channel id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>txID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">transaction id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>response</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">decoded payload</td>
         </tr>
 
     
     </tbody>
 </table>
-</dl>
 
+    
+
+    
+<dl class="details">
     
 
 	
@@ -254,6 +306,217 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="close"><span class="type-signature">&lt;async> </span>close()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        close the iterator.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A promise that is resolved with the close payload or rejected
+if there is a problem
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="next"><span class="type-signature">&lt;async> </span>next()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Get the next value and return it through a promise and also emit
+it if event listeners have been registered.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    a promise that is fulfilled with the next value or
+is rejected otherwise
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        </dl>
+    
 
     
 
@@ -302,7 +565,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-10-01T19:43:32+00:00
+		on 2018-10-02T13:11:36+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
