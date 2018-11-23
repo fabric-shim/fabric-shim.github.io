@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Node.js Contract and Shim Class: ProposalCreator</title>
+	<title>Hyperledger Fabric Node.js Contract and Shim Class: exports</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,14 +72,21 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: ProposalCreator</h1>
+	<h1 class="page-title">Class: exports</h1>
 <section>
 
 <header>
     
         <h2>
-        ProposalCreator
+        exports
         </h2>
+        
+            <div class="class-description">Uses the standard JSON serialization methods for converting to and from JSON strings
+(and buffers).
+
+Buffers are converted to the format of {type:'Buffer', data:xxxxx }
+If a object has a toJSON() method then that will be used - as this uses the stadnard
+JSON.stringify() approach</div>
         
     
 </header>
@@ -91,17 +98,12 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="ProposalCreator"><span class="type-signature"></span>new ProposalCreator()</h4>
+    <h4 class="name" id="exports"><span class="type-signature"></span>new exports()</h4>
     
     
 </dt>
 <dd>
 
-    
-    <div class="description">
-        This object contains the essential identity information of the chaincode invocation's submitter,
-including its organizational affiliation (mspid) and certificate (id_bytes)
-    </div>
     
 
     
@@ -113,60 +115,6 @@ including its organizational affiliation (mspid) and certificate (id_bytes)
 
     
 <dl class="details">
-    
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    <dl>
-
-<table class="props table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>mspid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The unique ID of the Membership Service Provider instance that is associated
-to the identity's organization and is able to perform digital signing and signature verification</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-</dl>
-
     
 
 	
@@ -235,6 +183,317 @@ to the identity's organization and is able to perform digital signing and signat
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="fromBuffer"><span class="type-signature"></span>fromBuffer(data)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Inflates the data to the object or other type
+
+If on inflation the object has a type field that will throw
+an error if it is not 'Buffer'
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Buffer</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">byte buffer containing the data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the resulting type
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="toBuffer"><span class="type-signature"></span>toBuffer(result)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Takes the result and produces a buffer that matches this serialization format
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">to be converted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    container the encoded data
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Buffer</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        </dl>
     
 
     

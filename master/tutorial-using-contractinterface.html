@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-contract-api.Context.html">fabric-contract-api.Context</a></li><li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li>
+					<li><a href="fabric-contract-api.Context.html">fabric-contract-api.Context</a></li><li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li><li><a href="module.exports.html">module.exports</a></li>
 				</ul>
 			</li>
 			
@@ -119,7 +119,7 @@
 <blockquote>
 <p>It is important to make sure that you have a <code>package-lock.json</code> to ensure the correct packages are imported.</p>
 </blockquote>
-<p>After the install there is a 'bootstrap' process that starts the chaincode up (more details later). The constructors of the exported Contracts will be run at this point; these constructors are for setting the namespace and optional setup of the 'error/monitoring functions', (again more later). This instance of the contract will existing whilst this chaincode docker image is up.</p>
+<p>After the install there is a 'bootstrap' process that starts the chaincode up (more details later). The constructors of the exported Contracts will be run at this point; these constructors are for setting the name and optional setup of the 'error/monitoring functions', (again more later). This instance of the contract will existing whilst this chaincode docker image is up.</p>
 <p>When chaincode is instantiated or updated, the <code>init()</code> function is the chaincode is called. As with the <code>invoke()</code> call from the client, a fn name and parameters can be passed. Remember therefore to have specific functions to call on <code>init()</code> and <code>update()</code> in order to do any data initialization or migration that might be needed.  These two functions have been abstracted away to focus on specific function implementations.</p>
 <h3>3: What needs to be exported?</h3><p>Node states that module exports are defined in <code>index.js</code></p>
 <p>In this example we have a single value that can be queried and updated. This has been split into to parts for demonstration purposes. </p>
@@ -147,7 +147,7 @@ const util = require('util');
 class UpdateValues extends Contract
 
     constructor(){
-        super('org.mynamespace.updates');
+        super('UpdateValuesContract');
     }
 
     async instantiate(ctx){
@@ -169,7 +169,7 @@ module.exports = UpdateValues;</code></pre><p>Note that ALL the functions define
 <li>There are 3 functions <code>setup</code> <code>setNewAssetValue</code> and <code>doubleAssetValue</code> that can be called by issuing the appropriate invoke client side</li>
 <li>The <code>ctx</code> in the function is a transaction context; each time a invoke is called this will be a new instance that can be used by the function implementation to access apis such as the world state of information on invoking identity.</li>
 <li>The arguments are split out from the array passed on the invoke. </li>
-<li>The constructor contains a 'namespace' to help identify the sets of functions</li>
+<li>The constructor contains a 'name' to help identify the sets of functions</li>
 </ul>
 <h3>5: Alternative ways of specifying the contracts</h3><p><em>package.json</em></p>
 <p>Instead of providing the Smart Contracts as exports, you can add details to the package.json. Using the above functions add this to the package.json</p>
@@ -179,22 +179,22 @@ module.exports = UpdateValues;</code></pre><p>Note that ALL the functions define
 <h2>Running chaincode in development mode</h2><p>This is quite easy - as you need to run the startChaincode command.</p>
 <pre class="prettyprint source"><code>$ $(npm bin)/fabric-chaincode-node --peer.address localhost:7052</code></pre><p>(this is actually what the peer does; this does mean that any chaincode that is written using the existing chaincode interface will continue to work as is.)</p>
 <h2>Using this chaincode</h2><p>Each of the functions can be invoked with arbitrary arguments. The name of the function is of the format</p>
-<pre class="prettyprint source"><code>[namespace:]functionname</code></pre><p>If a namespace is given in the constructor then it will be prefixed separated by a : (colon)</p>
+<pre class="prettyprint source"><code>[name:]functionname</code></pre><p>If a name is given in the constructor then it will be prefixed separated by a : (colon)</p>
 <blockquote>
 <p><em>assuming that you have a fabric up and running with the appropriate environment variables set</em></p>
 </blockquote>
 <pre class="prettyprint source"><code>$ peer chaincode install --lang node --name mycontract --version v0 --path ~/chaincode-examples
-$ peer chaincode instantiate --orderer localhost:7050 --channelID mychannel --lang node --name mycontract --version v0 -c '{&quot;Args&quot;:[&quot;org.mynamespace.updates.setup&quot;]}'</code></pre><p>Will get things working...
+$ peer chaincode instantiate --orderer localhost:7050 --channelID mychannel --lang node --name mycontract --version v0 -c '{&quot;Args&quot;:[&quot;UpdateValuesContract:setup&quot;]}'</code></pre><p>Will get things working...
 Then you can invoke the chaincode via this command.</p>
-<pre class="prettyprint source"><code>$ peer chaincode invoke --orderer localhost:7050 --channelID mychannel -c '{&quot;Args&quot;:[&quot;org.mynamespace.removes.getAssetValue&quot;]}' -n mycontract4  </code></pre><h2>Additional support provided by the SmartContract class</h2><p>In the case where you ask for a function to be executed, it could be the case that this doesn't exist. 
+<pre class="prettyprint source"><code>$ peer chaincode invoke --orderer localhost:7050 --channelID mychannel -c '{&quot;Args&quot;:[&quot;UpdateValuesContract:getAssetValue&quot;]}' -n mycontract4  </code></pre><h2>Additional support provided by the SmartContract class</h2><p>In the case where you ask for a function to be executed, it could be the case that this doesn't exist. 
 You can provide you own function to be executed in this case, the default is to throw and error but you're able to customise this if you wish. </p>
 <p>For example</p>
 <pre class="prettyprint source"><code>    /** 
-     * Sets a namespace so that the functions in this particular class can 
+     * Sets a name so that the functions in this particular class can 
      * be separated from others.
      */
     constructor() {
-        super('org.mynamespace.updates');
+        super('UpdateValuesContract');
     }
 
     /** The function to invoke if something unkown comes in.
@@ -244,10 +244,10 @@ class ScenarioContext extends Context{
 <ul>
 <li>All the functions that are present in the prototype of a class that extends <em>Contract</em> will be invokable</li>
 <li>The exports from the node module <em>MUST</em> include <em>contracts</em> that is an array of constructors (1 or more)</li>
-<li>Each class <em>MAY</em> call in it's constructor pass a namespace. This is prefixed to each of the function names by an _  (underscore)</li>
+<li>Each class <em>MAY</em> call in it's constructor pass a name. This is prefixed to each of the function names by an _  (underscore)</li>
 <li>Each class <em>MAY</em> define functions that are executed before and functions that are executed after the invoked function.<ul>
 <li>These are part of the same fabric transaction</li>
-<li>They are scoped per namespace</li>
+<li>They are scoped per name</li>
 </ul>
 </li>
 <li>Each class <em>MAY</em> define a function that would be executed if a matching function name does not exist; otherwise a 'no function exists' error will be thrown</li>
@@ -314,7 +314,7 @@ v2==&quot;world&quot; // is false,  v2 is &quot;hello&quot;</code></pre><p>In an
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2018-11-22T09:34:22+00:00
+		on 2018-11-23T13:49:56+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
