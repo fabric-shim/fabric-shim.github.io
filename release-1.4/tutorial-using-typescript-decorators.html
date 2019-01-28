@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Node.js Contract and Shim Class: CommonIterator</title>
+	<title>Hyperledger Fabric Node.js Contract and Shim Tutorial: Using TypeScript Decorators</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,476 +67,58 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
-			
-
-	<h1 class="page-title">Class: CommonIterator</h1>
-<section>
+			<section class="tutorial-section">
 
 <header>
     
-        <h2>
-        CommonIterator
-        </h2>
-        
-            <div class="class-description">CommonIterator allows a chaincode to check whether any more result(s)
-need to be fetched from an iterator and close it when done.</div>
-        
-    
+
+    <h2>Using TypeScript Decorators</h2>
 </header>
 
-
 <article>
-    <div class="container-overview">
-    
-        
-<hr>
-<dt>
-    <h4 class="name" id="CommonIterator"><span class="type-signature"></span>new CommonIterator(handler, channel_id, txID, response)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        constructor
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>handler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">ChaincodeSupportClient</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">client handler</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>channel_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">channel id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>txID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">transaction id</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>response</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">decoded payload</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<hr>
-<dt>
-    <h4 class="name" id="close"><span class="type-signature">&lt;async> </span>close()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        close the iterator.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    A promise that is resolved with the close payload or rejected
-if there is a problem
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">promise</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="next"><span class="type-signature">&lt;async> </span>next()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Get the next value and return it through a promise and also emit
-it if event listeners have been registered.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    a promise that is fulfilled with the next value or
-is rejected otherwise
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">promise</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
+    <h1>Summary of the Typescript Decorators</h1><p>When using Typescript to code the Contract implementations, Typescript Decorators can be used to provide additional metadata; together with the type information that can be introspected, a very detailed set of metadata can be put within the source code directly.</p>
+<h2>Decorators available</h2><ul>
+<li>@Info<ul>
+<li>Supplies information about the following contract such as license terms or author.</li>
+<li>This takes as a parameter an object that has the key-value pairs as defined on the OpenAPI v3 <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#infoObject">Info object spec</a></li>
+</ul>
+</li>
+<li>@Transaction<ul>
+<li>Defines the following function to be a callable transaction function</li>
+<li>Takes a boolean parameter; true indicates that this function is intended to be called with the 'submit' semantics, false indicates that this is intended to be called with the evaluate semantics.  (Submit means submit to the orderer to be recorded on the ledger)</li>
+<li>Default is true</li>
+</ul>
+</li>
+<li>@Returns<ul>
+<li>Takes a string that is the name of the type that is being returned by this function</li>
+<li>This is present as required as Typescript does not give back the complete return type</li>
+</ul>
+</li>
+<li>@Object<ul>
+<li>Defines the class that represents one of the complex types that can be returned or passed to the transaction functions</li>
+</ul>
+</li>
+<li>@Property<ul>
+<li>Defines a property of the a class (identified by @Object) that should be passed within the object</li>
+</ul>
+</li>
+<li>@Param<ul>
+<li>Permits additional information such as a type and description to provided for parameters. (Note type is only useful in weakly typed languages)</li>
+</ul>
+</li>
+</ul>
 </article>
 
 </section>
-
-
-
 
 		</div>
 	</div>
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
