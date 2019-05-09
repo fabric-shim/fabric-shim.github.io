@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-contract-api.Context.html">fabric-contract-api.Context</a></li><li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li><li><a href="module.exports.html">module.exports</a></li>
+					<li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li><li><a href="module.exports.html">module.exports</a></li>
 				</ul>
 			</li>
 			
@@ -79,33 +79,41 @@
 </header>
 
 <article>
-    <h1>Summary of the Typescript Decorators</h1><p>When using Typescript to code the Contract implementations, Typescript Decorators can be used to provide additional metadata; together with the type information that can be introspected, a very detailed set of metadata can be put within the source code directly.</p>
-<h2>Decorators available</h2><ul>
-<li>@Info<ul>
+    <h1>Summary of the Typescript Decorators</h1>
+<p>When using Typescript to code the Contract implementations, Typescript Decorators can be used to provide additional metadata; together with the type information that can be introspected, a very detailed set of metadata can be put within the source code directly.</p>
+<h2>Decorators available</h2>
+<ul>
+<li>@Info
+<ul>
 <li>Supplies information about the following contract such as license terms or author.</li>
 <li>This takes as a parameter an object that has the key-value pairs as defined on the OpenAPI v3 <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#infoObject">Info object spec</a></li>
 </ul>
 </li>
-<li>@Transaction<ul>
+<li>@Transaction
+<ul>
 <li>Defines the following function to be a callable transaction function</li>
 <li>Takes a boolean parameter; true indicates that this function is intended to be called with the 'submit' semantics, false indicates that this is intended to be called with the evaluate semantics.  (Submit means submit to the orderer to be recorded on the ledger)</li>
 <li>Default is true</li>
 </ul>
 </li>
-<li>@Returns<ul>
+<li>@Returns
+<ul>
 <li>Takes a string that is the name of the type that is being returned by this function</li>
 <li>This is present as required as Typescript does not give back the complete return type</li>
 </ul>
 </li>
-<li>@Object<ul>
+<li>@Object
+<ul>
 <li>Defines the class that represents one of the complex types that can be returned or passed to the transaction functions</li>
 </ul>
 </li>
-<li>@Property<ul>
+<li>@Property
+<ul>
 <li>Defines a property of the a class (identified by @Object) that should be passed within the object</li>
 </ul>
 </li>
-<li>@Param<ul>
+<li>@Param
+<ul>
 <li>Permits additional information such as a type and description to provided for parameters. (Note type is only useful in weakly typed languages)</li>
 </ul>
 </li>
@@ -145,9 +153,9 @@
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.1</a>
 	
-		on 2019-04-11T21:49:46+00:00
+		on 2019-05-09T08:24:15+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
