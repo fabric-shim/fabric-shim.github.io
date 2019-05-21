@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Hyperledger Fabric Node.js Contract and Shim Classes</title>
+	<title>Hyperledger Fabric Node.js Contract and Shim Class: Context</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,14 +72,24 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Classes</h1>
+	<h1 class="page-title">Class: Context</h1>
 <section>
 
 <header>
     
         <h2>
-        
+        Context
         </h2>
+        
+            <div class="class-description">The Context class provides the transactional context per a transactional execution.
+
+This can be subclassed to provided additional functional behaviour to support
+smart contract execution.
+
+An example would be to provide additional help to map application object ids to world state
+composite keys.
+
+In the constructor, do not reference the stub or clientidentity functions.</div>
         
     
 </header>
@@ -89,8 +99,24 @@
     <div class="container-overview">
     
         
+<hr>
+<dt>
+    <h4 class="name" id="Context"><span class="type-signature"></span>new Context()</h4>
+    
+    
+</dt>
+<dd>
 
-        
+    
+
+    
+
+    
+
+    
+    
+
+    
 <dl class="details">
     
 
@@ -130,7 +156,38 @@
 </dl>
 
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
         
+    <pre class="sunlight-highlight-javascript">class ScenarioContext extends Context{
+
+	constructor(){
+		super();
+	}
+
+
+	generateKey(){
+		return this.stub.createCompositeKey(&#x27;type&#x27;,[&#x27;keyvalue&#x27;]);
+	}
+
+  }</pre>
+
+
+    
+</dd>
+
     
     </div>
 
@@ -139,83 +196,275 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            <dt><a href="fabric-contract-api.Context.html">Context</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt>
+    <h4 class="name" id="setChaincodeStub"><span class="type-signature"></span>setChaincodeStub(stub)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This sets the chaincode stub object with api to use for worldstate access.
+MUST NOT BE CALLED FROM SMART CONTRACT CODE
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
         
-            <dt><a href="fabric-contract-api.Contract.html">Contract</a></dt>
-            <dd></dd>
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
         
-            <dt><a href="fabric-shim.ChaincodeInterface.html">ChaincodeInterface</a></dt>
-            <dd></dd>
+        <th>Name</th>
         
-            <dt><a href="fabric-shim.ChaincodeProposalPayload.html">ChaincodeProposalPayload</a></dt>
-            <dd></dd>
+
+        <th>Type</th>
+
         
-            <dt><a href="fabric-shim.ChaincodeStub.html">ChaincodeStub</a></dt>
-            <dd></dd>
+
         
-            <dt><a href="fabric-shim.ChannelHeader.html">ChannelHeader</a></dt>
-            <dd></dd>
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>stub</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ChaincodeStub</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">chaincode stub instance</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
         
-            <dt><a href="fabric-shim.ClientIdentity.html">ClientIdentity</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt>
+    <h4 class="name" id="setClientIdentity"><span class="type-signature"></span>setClientIdentity(clientIdentity)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        This sets the ClientIdentity object to use for information on the transaction invoking identity
+MUST NOT BE CALLED FROM SMART CONTRACT CODE
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
         
-            <dt><a href="fabric-shim.CommonIterator.html">CommonIterator</a></dt>
-            <dd></dd>
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
         
-            <dt><a href="fabric-shim.ErrorResponse.html">ErrorResponse</a></dt>
-            <dd></dd>
+        <th>Name</th>
         
-            <dt><a href="fabric-shim.FunctionAndParameters.html">FunctionAndParameters</a></dt>
-            <dd></dd>
+
+        <th>Type</th>
+
         
-            <dt><a href="fabric-shim.Header.html">Header</a></dt>
-            <dd></dd>
+
         
-            <dt><a href="fabric-shim.HistoryQueryIterator.html">HistoryQueryIterator</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.Proposal.html">Proposal</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.ProposalCreator.html">ProposalCreator</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.Response.html">Response</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.Shim.html">Shim</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.SignatureHeader.html">SignatureHeader</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.SignedProposal.html">SignedProposal</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.StateQueryIterator.html">StateQueryIterator</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.SuccessResponse.html">SuccessResponse</a></dt>
-            <dd></dd>
-        
-            <dt><a href="fabric-shim.X509Certificate.html">X509Certificate</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module.exports.html">exports</a></dt>
-            <dd></dd>
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clientIdentity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ClientIdentity</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">chaincode stub instance</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
         </dl>
-    
-
-    
-
-    
-
-    
-
     
 
     
