@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="fabric-contract-api.Context.html">fabric-contract-api.Context</a></li><li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="fabric-shim.X509Certificate.html">fabric-shim.X509Certificate</a></li><li><a href="module.exports.html">module.exports</a></li>
+					<li><a href="fabric-contract-api.Context.html">fabric-contract-api.Context</a></li><li><a href="fabric-contract-api.Contract.html">fabric-contract-api.Contract</a></li><li><a href="fabric-shim.ChaincodeInterface.html">fabric-shim.ChaincodeInterface</a></li><li><a href="fabric-shim.ChaincodeProposalPayload.html">fabric-shim.ChaincodeProposalPayload</a></li><li><a href="fabric-shim.ChaincodeStub.html">fabric-shim.ChaincodeStub</a></li><li><a href="fabric-shim.ChannelHeader.html">fabric-shim.ChannelHeader</a></li><li><a href="fabric-shim.ClientIdentity.html">fabric-shim.ClientIdentity</a></li><li><a href="fabric-shim.CommonIterator.html">fabric-shim.CommonIterator</a></li><li><a href="fabric-shim.ErrorResponse.html">fabric-shim.ErrorResponse</a></li><li><a href="fabric-shim.FunctionAndParameters.html">fabric-shim.FunctionAndParameters</a></li><li><a href="fabric-shim.Header.html">fabric-shim.Header</a></li><li><a href="fabric-shim.HistoryQueryIterator.html">fabric-shim.HistoryQueryIterator</a></li><li><a href="fabric-shim.PaginationQueryResponse.html">fabric-shim.PaginationQueryResponse</a></li><li><a href="fabric-shim.PrivateQueryResponse.html">fabric-shim.PrivateQueryResponse</a></li><li><a href="fabric-shim.Proposal.html">fabric-shim.Proposal</a></li><li><a href="fabric-shim.ProposalCreator.html">fabric-shim.ProposalCreator</a></li><li><a href="fabric-shim.QueryResponseMetadata.html">fabric-shim.QueryResponseMetadata</a></li><li><a href="fabric-shim.Response.html">fabric-shim.Response</a></li><li><a href="fabric-shim.Shim.html">fabric-shim.Shim</a></li><li><a href="fabric-shim.SignatureHeader.html">fabric-shim.SignatureHeader</a></li><li><a href="fabric-shim.SignedProposal.html">fabric-shim.SignedProposal</a></li><li><a href="fabric-shim.StateQueryIterator.html">fabric-shim.StateQueryIterator</a></li><li><a href="fabric-shim.SuccessResponse.html">fabric-shim.SuccessResponse</a></li><li><a href="module.exports.html">module.exports</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li><li><a href="tutorial-using-contractinterface.html">Using the Contract Interface</a></li>
+					<li><a href="tutorial-using-chaincodeinterface.html">Using the Chaincode Interface</a></li><li><a href="tutorial-using-contractinterface.html">Using the Contract Interface</a></li><li><a href="tutorial-using-iterators.html">Working with apis that return iterators</a></li>
 				</ul>
 			</li>
 			
@@ -317,7 +317,7 @@ with a value of `attrValue`.
             
 
             <td class="description last">Name of the attribute to retrieve the value from the
-    identity's credentials (such as x.509 certificate for PKI-based MSPs)</td>
+    identity's credentials (such as X.509 certificate for PKI-based MSPs)</td>
         </tr>
 
     
@@ -497,7 +497,7 @@ If the invoking identity does not possess the attribute, returns null.
             
 
             <td class="description last">Name of the attribute to retrieve the value from the
-    identity's credentials (such as x.509 certificate for PKI-based MSPs).</td>
+    identity's credentials (such as X.509 certificate for PKI-based MSPs).</td>
         </tr>
 
     
@@ -696,6 +696,108 @@ is guaranteed to be unique within the MSP.
             
 <hr>
 <dt>
+    <h4 class="name" id="getIDBytes"><span class="type-signature"></span>getIDBytes()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        getIDBytes returns the ID bytes associated with the invoking identity. If the MSP is
+implemented with X.509 certificates, then these ID bytes will be those of the X.509
+certificate. If you wish to inspect the contents of the X.509 certificate, then you
+must use an X.509 parsing library (for example, jsrsasign or @fidm/x509) to decode
+these ID bytes.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Uint8Array</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="getMSPID"><span class="type-signature"></span>getMSPID()</h4>
     
     
@@ -790,109 +892,6 @@ is guaranteed to be unique within the MSP.
     
 </dd>
 
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="getX509Certificate"><span class="type-signature"></span>getX509Certificate()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        getX509Certificate returns the X509 certificate associated with the invoking identity,
-or null if it was not identified by an X509 certificate, for instance if the MSP is
-implemented with an alternative to PKI such as <a href="https://jira.hyperledger.org/browse/FAB-5673">Identity Mixer</a>.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">X509Certificate</span>
-|
-
-<span class="param-type">null</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
         </dl>
     
 
@@ -941,9 +940,9 @@ implemented with an alternative to PKI such as <a href="https://jira.hyperledger
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2019-01-08T02:15:27+00:00
+		on 2019-10-08T14:53:37+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
